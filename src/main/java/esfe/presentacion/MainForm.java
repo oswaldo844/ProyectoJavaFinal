@@ -2,6 +2,7 @@ package esfe.presentacion;
 
 import esfe.dominio.User;
 import  javax.swing.*;
+import java.awt.Toolkit;
 
 public class MainForm extends JFrame{
 
@@ -62,7 +63,29 @@ public class MainForm extends JFrame{
         itemUsers.addActionListener(e -> { // Agrega un ActionListener al elemento "Usuarios".
             UserReadingForm userReadingForm=new UserReadingForm(this); // Cuando se hace clic, crea una nueva instancia de UserReadingForm (formulario para leer/listar usuarios), pasándole la instancia actual de MainForm como padre.
             userReadingForm.setVisible(true); // Hace visible el formulario de lectura de usuarios.
+
         });
+        JMenuItem itemClientes = new JMenuItem("Clientes");
+        menuMantenimiento.add(itemClientes);
+        itemClientes.addActionListener(e -> {
+            ClientesForm clientesForm = new ClientesForm();
+
+            JDialog dialog = new JDialog(this, "Gestión de Clientes", true);
+            dialog.setContentPane(clientesForm.getmainPanel());
+
+            // Establece tamaño a pantalla de cliente
+            int width = (int) (Toolkit.getDefaultToolkit().getScreenSize().width * 0.9);
+            int height = (int) (Toolkit.getDefaultToolkit().getScreenSize().height * 0.7);
+            dialog.setSize(width, height);
+
+
+            dialog.setLocationRelativeTo(this); // Centrado
+            dialog.setVisible(true);
+        });
+
+
+
+
 
     }
 }
