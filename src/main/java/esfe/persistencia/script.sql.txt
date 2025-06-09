@@ -1,0 +1,21 @@
+CREATE DATABASE TareaDB;
+GO
+USE TareaDB;
+GO
+CREATE TABLE Users (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    name VARCHAR(100) NOT NULL,
+    passwordHash VARCHAR(64) NOT NULL,
+    email VARCHAR(200) NOT NULL UNIQUE,
+    status TINYINT NOT NULL
+);
+
+
+
+CREATE TABLE Tareas (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    titulo NVARCHAR(100) NOT NULL,
+    descripcion NVARCHAR(255),
+    fecha_vencimiento DATE,
+    estado NVARCHAR(20) DEFAULT 'Pendiente'
+);
