@@ -83,7 +83,25 @@ public class MainForm extends JFrame{
             dialog.setVisible(true);
         });
 
+// --- Aquí agregamos el menú y acción para Servicios ---
+        JMenuItem itemServicios = new JMenuItem("Servicios");
+        menuMantenimiento.add(itemServicios);
+        itemServicios.addActionListener(e -> {
+            ServiciosForm serviciosForm = new ServiciosForm();
 
+            JDialog dialog = new JDialog(this, "Gestión de Servicios", true);
+            dialog.setContentPane(serviciosForm.getMainPanel());
+
+            // Tamaño similar al de Clientes
+            int width = (int) (Toolkit.getDefaultToolkit().getScreenSize().width * 0.9);
+            int height = (int) (Toolkit.getDefaultToolkit().getScreenSize().height * 0.7);
+            dialog.setSize(width, height);
+
+            dialog.setLocationRelativeTo(this);
+            dialog.setVisible(true);
+        });
+
+        // ... resto del método ...
 
 
 
