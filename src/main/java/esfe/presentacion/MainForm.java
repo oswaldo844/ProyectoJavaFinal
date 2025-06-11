@@ -101,9 +101,50 @@ public class MainForm extends JFrame{
             dialog.setVisible(true);
         });
 
-        // ... resto del método ...
+        // --- Aquí agregamos el menú y acción para Citas ---
+        JMenuItem itemCitas = new JMenuItem("Citas");
+        menuMantenimiento.add(itemCitas);
+        itemCitas.addActionListener(e -> {
+            // Creamos la instancia del formulario de Citas
+            AppointmentForm appointmentForm = new AppointmentForm();
+
+            // Creamos el diálogo modal
+            JDialog dialog = new JDialog(this, "Gestión de Citas", true);
+            dialog.setContentPane(appointmentForm.getMainPanel());
+
+            // Ajustamos un tamaño similar al de Clientes/Servicios
+            int width = (int) (Toolkit.getDefaultToolkit().getScreenSize().width * 0.9);
+            int height = (int) (Toolkit.getDefaultToolkit().getScreenSize().height * 0.7);
+            dialog.setSize(width, height);
+
+            dialog.setLocationRelativeTo(this);
+            dialog.setVisible(true);
+
+
+        });
+
+        //solucion supuestamente para corregir error de pantalla fuera
+
+        JMenuItem itemListaCitas = new JMenuItem("Lista de Citas");
+        menuMantenimiento.add(itemListaCitas);
+        itemListaCitas.addActionListener(e -> {
+            AppointmentListForm appointmentListForm = new AppointmentListForm();
+
+            JDialog dialog = new JDialog(this, "Lista de Citas", true);
+            dialog.setContentPane(appointmentListForm.getMainPanel());
+
+            // Tamaño de la ventana
+            int width = (int) (Toolkit.getDefaultToolkit().getScreenSize().width * 0.9);
+            int height = (int) (Toolkit.getDefaultToolkit().getScreenSize().height * 0.7);
+            dialog.setSize(width, height);
+
+            dialog.setLocationRelativeTo(this); // Centrar respecto al MainForm
+            dialog.setVisible(true);
+        });
+
 
 
 
     }
+
 }

@@ -55,5 +55,28 @@ public class ServiceDAO {
         stmt.setBoolean(4, service.isStatus()); // ← Actualiza también el estado
         stmt.setInt(5, service.getId());
         stmt.executeUpdate();
+
+
     }
+    public List<Service> getAllServices() throws SQLException {
+        Connection conn = ConnectionManager.getInstance().connect();
+        String sql = "SELECT id, name, durationMinutes, price, status FROM Services WHERE status = 1";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+
+        List<Service> servicios = new ArrayList<>();
+        while (rs.next()) {
+            servicios.add(new Service(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getInt("durationMinutes"),
+                    rs.getDouble("price"),
+                    rs.getBoolean("status")
+            ));
+        }
+        return servicios;
+    }
+
+
+
 }

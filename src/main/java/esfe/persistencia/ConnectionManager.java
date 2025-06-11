@@ -22,7 +22,7 @@ public class ConnectionManager {
      * - user=dev : Nombre de usuario para la autenticación.
      * - password=dev : Contraseña para la autenticación.
      */
-    private static final String STR_CONNECTION = "jdbc:sqlserver://DESKTOP-6L2O9CI:1433; " +
+    private static final String STR_CONNECTION = "jdbc:sqlserver://DESKTOP-FM88E00:1433; " +
             "encrypt=true; " +
             "database=TareaDB; " +
             "trustServerCertificate=true;" +
